@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +22,5 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-    Route::get('/', ['DashboardController', 'home'])->name('home');
+    Route::get('/', [DashboardController::class, 'home'])->name('home');
 });
