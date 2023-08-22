@@ -26,7 +26,6 @@ Auth::routes();
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'home'])->name('home');
     Route::resource('/posts', Post::class);
-    Route::resource('/posts', Post::class);
 });
 
 Route::name('guest.')->group(function () {

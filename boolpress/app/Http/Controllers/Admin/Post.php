@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class Post extends Controller
 {
@@ -24,6 +25,8 @@ class Post extends Controller
     public function create()
     {
         //
+        return view('admin.post.create');
+
     }
 
     /**
@@ -31,6 +34,20 @@ class Post extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = $request->validate(
+            [
+                'title' => ['required', 'unique:posts', 'max:255'],
+                'author' => ['required', 'max:255'],
+                'content' => ['required', ''],
+                'image' => ['url:https'],
+            ]
+
+        );
+        $data['slug'] = Str::of($data['title'])->slug('-');
+        $newPost = new \App\Models\Admin\Post;
+        $newPost = \App\Models\Admin\Post::create($data);
+        return redirect()->route('admin.posts.index');
         //
     }
 
