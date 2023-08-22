@@ -8,9 +8,6 @@ use Faker\Generator as Faker;
 
 class PostSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(Faker $faker): void
     {
         //
