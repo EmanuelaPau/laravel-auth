@@ -13,7 +13,9 @@ class Post extends Controller
     public function index()
     {
         //
-        return view('admin.post.index');
+        $posts = \App\Models\Admin\Post::paginate(15);
+        // @dd($posts);
+        return view('admin.post.index', compact('posts'));
     }
 
     /**
