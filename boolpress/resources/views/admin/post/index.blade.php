@@ -26,6 +26,7 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->author}}</td>
                     <td>
+                        <a href="" class="btn btn-primary btn-sm">Show</a>
                         <a href="" class="btn btn-success btn-sm">Edit</a>
                         <a href="" class="btn btn-warning btn-sm">Delete</a>
                     </td>
