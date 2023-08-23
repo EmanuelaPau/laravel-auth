@@ -90,7 +90,7 @@ class PostController extends Controller
 
         );
         $data['slug'] = Str::of($data['title'])->slug('-');
-        $post::update($data);
+        $post->update($data);
 
         return redirect()->route('admin.posts.show', compact('post'));
         //
