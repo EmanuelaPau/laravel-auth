@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -65,6 +66,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
+        $post = Post::findOrFail($id);
+        return view('admin.post.edit', compact('post'));
+
         //
     }
 

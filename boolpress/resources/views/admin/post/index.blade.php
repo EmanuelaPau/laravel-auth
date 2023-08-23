@@ -14,12 +14,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- <tr>
-                        <th scope="row">a</th>
-                        <td>b</td>
-                        <td>c</td>
-                        <td>d</td>
-                    </tr> --}}
                     @foreach ($posts as $post)
                     <tr>
                         <th scope="row">{{$post->id}}</th>
@@ -27,7 +21,7 @@
                         <td>{{$post->author}}</td>
                         <td>
                             <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary btn-sm">Show</a>
-                            <a href="" class="btn btn-success btn-sm">Edit</a>
+                            <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-success btn-sm">Edit</a>
                             <a href="" class="btn btn-warning btn-sm">Delete</a>
                         </td>
                     </tr>
