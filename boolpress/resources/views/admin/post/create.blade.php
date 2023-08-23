@@ -17,7 +17,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <div class="mb-3">
-                    <label for="exampleAuthor" class="form-label">Author Name</label>
+                    <label for="author" class="form-label">Author Name</label>
                     <input type="text" class="form-control" id="exampleAuthor" name="author" placeholder="write here author name">
                 </div>
                 @error('image')
