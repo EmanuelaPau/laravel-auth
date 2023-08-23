@@ -11,7 +11,7 @@
                     <h5 class="card-title">{{$post->title}}</h5>
                     <p class="card-text">{{$post->content}}</p>
                     <p class="card-text">{{$post->author}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="{{route('admin.posts.index')}}" class="btn btn-primary">Go to List</a>
                 </div>
             </div>
         </div>
