@@ -20,7 +20,7 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->author}}</td>
                         <td>
-                            <form class="d-inline" action="{{route('admin.posts.destroy', $post)}}" method="POST">
+                            <form class="d-inline" action="{{route('admin.posts.restore', $post)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" href="" class="btn btn-warning btn-sm">Restore</button>

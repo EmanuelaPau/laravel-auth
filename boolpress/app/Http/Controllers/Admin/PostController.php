@@ -114,4 +114,13 @@ class PostController extends Controller
 
 
     }
+
+    public function restore(string $id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+        return redirect()->route('admin.posts.show', $id);
+
+
+    }
 }
