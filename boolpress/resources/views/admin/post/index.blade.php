@@ -22,10 +22,10 @@
                         <td>
                             <a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary btn-sm">Show</a>
                             <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-success btn-sm">Edit</a>
-                            <form class="d-inline" action="" method="POST">
+                            <form class="d-inline" action="{{route('admin.posts.destroy', $post)}}" method="POST">
                                 @csrf
-                                @method('DESTROY')
-                                <button href="{{route('admin.posts.destroy', $post)}}" class="btn btn-warning btn-sm">Delete</button>
+                                @method('DELETE')
+                                <button type="submit" href="" class="btn btn-warning btn-sm">Delete</button>
                             </form>
                         </td>
                     </tr>
