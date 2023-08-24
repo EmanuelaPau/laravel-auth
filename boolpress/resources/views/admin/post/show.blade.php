@@ -16,6 +16,8 @@
                     <p class="card-text">{{$post->content}}</p>
                     <p class="card-text">{{$post->author}}</p>
                     <a href="{{route('admin.posts.index')}}" class="btn btn-primary">Go to List</a>
+                    <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-success">Edit</a>
+                    <a href="{{route('admin.posts.deleted', $post->id)}}" class="btn btn-warning">Delete</a>
                 </div>
             </div>
         </div>
