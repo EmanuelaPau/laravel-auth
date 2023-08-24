@@ -26,7 +26,7 @@
                 @enderror
                 <div class="mb-3">
                     <label for="image" class="form-label">Image link</label>
-                    <input type="file" class="form-control" id="image" name="image" placeholder="put here your image" value="{{old('image', $post->image)}}">
+                    <input type="file" class="form-control" id="image" name="image" placeholder="put here your image" value="{{old('image', '')}}">
                 </div>
                 @error('content')
                     <div class="alert alert-danger">{{ $message }}</div>
