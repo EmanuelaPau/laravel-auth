@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12">
-            <form class="" action="{{ route('admin.posts.update', $post->id) }}" method="POST">
+            <form enctype="multipart/form-data" class="" action="{{ route('admin.posts.update', $post->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 @error('title')
@@ -26,7 +26,7 @@
                 @enderror
                 <div class="mb-3">
                     <label for="image" class="form-label">Image link</label>
-                    <input type="text" class="form-control" id="image" name="image" placeholder="https://image-link.jpg" value="{{old('image', $post->image)}}">
+                    <input type="image" class="form-control" id="image" name="image" placeholder="put here your image" value="{{old('image', $post->image)}}">
                 </div>
                 @error('content')
                     <div class="alert alert-danger">{{ $message }}</div>

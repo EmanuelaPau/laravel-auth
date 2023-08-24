@@ -42,11 +42,14 @@ class PostController extends Controller
                 'title' => ['required', 'unique:posts', 'max:255'],
                 'author' => ['required', 'max:255'],
                 'content' => ['required', ''],
-                'image' => ['url:https'],
+                'image' => ['file'],
             ]
 
         );
         $data['slug'] = Str::of($data['title'])->slug('-');
+        $img_path = \Storage::put('uploads/posts', $request['image']);
+        $data['image'] = $img_path;
+        $img_path;
         $newPost = new \App\Models\Admin\Post;
         $newPost = \App\Models\Admin\Post::create($data);
         return redirect()->route('admin.posts.index');
@@ -85,10 +88,12 @@ class PostController extends Controller
                 'title' => ['required', 'max:255', Rule::unique('posts')->ignore($post->id)],
                 'author' => ['required', 'max:255'],
                 'content' => ['required', ''],
-                'image' => ['url:https'],
+                'image' => ['files'],
             ]
 
         );
+        $img_path = \Storage::put('uploads/posts', $request['image']);
+        $data['image'] = $img_path;
         $data['slug'] = Str::of($data['title'])->slug('-');
         $post->update($data);
 

@@ -6,7 +6,11 @@
         <div class="col-12 d-flex justify-content-center">
             <div class="card" style="width: 60%">
                 <p class="card-text text-center mt-2">{{$post->id}}</p>
-                <img src="{{$post->image}}" class="card-img-top" alt="...">
+                @if(str_starts_with($post->image,'http'))
+                    <img src="{{$post->image}}" class="card-img-top" alt="{{ $post->title }}">
+                @else
+                    <img src="{{asset('storage/' . $post->image)}}" class="card-img-top" alt="{{ $post->title }}.">
+                @endif
                 <div class="card-body">
                     <h5 class="card-title">{{$post->title}}</h5>
                     <p class="card-text">{{$post->content}}</p>
