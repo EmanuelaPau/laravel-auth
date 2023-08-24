@@ -25,6 +25,11 @@
                                 @method('DELETE')
                                 <button type="submit" href="" class="btn btn-warning btn-sm">Restore</button>
                             </form>
+                            <form class="d-inline" action="{{route('admin.posts.obliterate', $post)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" href="" class="btn btn-danger btn-sm">Permanent Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

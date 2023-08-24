@@ -34,7 +34,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
 
         $data = $request->validate(
@@ -47,12 +47,13 @@ class PostController extends Controller
 
         );
         $data['slug'] = Str::of($data['title'])->slug('-');
-        $img_path = \Storage::put('uploads/posts', $request['image']);
-        $data['image'] = $img_path;
-        $img_path;
+        if ($request->hasFile('image')) {
+            $img_path = \Storage::put('uploads/posts', $request['image']);
+            $data['image'] = $img_path;
+        }
         $newPost = new \App\Models\Admin\Post;
         $newPost = \App\Models\Admin\Post::create($data);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.show', $newPost);
         //
     }
 
@@ -116,8 +117,6 @@ class PostController extends Controller
     {
         $posts = Post::onlyTrashed()->paginate(10);
         return view('admin.post.deleted', compact('posts'));
-
-
     }
 
     public function restore(string $id)
@@ -125,7 +124,13 @@ class PostController extends Controller
         $post = Post::withTrashed()->findOrFail($id);
         $post->restore();
         return redirect()->route('admin.posts.show', $id);
+    }
 
-
+    public function obliterate(string $id)
+    {
+        $post = Post::onlyTrashed()->findOrFail($id);
+        \Storage::delete($post->image);
+        $post->forceDelete();
+        return redirect()->route('admin.posts.index');
     }
 }
