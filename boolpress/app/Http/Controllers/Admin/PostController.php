@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Post;
+use App\Models\Admin\Post as Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = \App\Models\Admin\Post::paginate(15);
+        $posts = Post::paginate(15);
         // @dd($posts);
         return view('admin.post.index', compact('posts'));
     }
@@ -51,8 +51,8 @@ class PostController extends Controller
             $img_path = \Storage::put('uploads/posts', $request['image']);
             $data['image'] = $img_path;
         }
-        $newPost = new \App\Models\Admin\Post;
-        $newPost = \App\Models\Admin\Post::create($data);
+        $newPost = new Post;
+        $newPost = Post::create($data);
         return redirect()->route('admin.posts.show', $newPost);
         //
     }
@@ -60,7 +60,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(\App\Models\Admin\Post $post)
+    public function show(Post $post)
     {
         return view('admin.post.show', compact('post'));
         //
